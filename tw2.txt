@@ -1,0 +1,8 @@
+import requests, json
+api_key = "791425d9a3c8f04fcccbcf648bbcddae"
+city_name = input("Enter the city name:")
+base_url = "https://api.openweathermap.org/data/2.5/weather?q="
+complete_url = base_url + city_name + "&appid=" + api_key
+response = requests.get(complete_url)
+data = response.json()
+print("Current Temperature in", city_name, " is", data['main']['temp'])
