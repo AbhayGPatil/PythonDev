@@ -1,0 +1,14 @@
+fname =input("Enter filename: ")
+fh= open(fname)
+n= int(input("Enter number of lines to display"))
+print("First",n,"lines are-")
+lines=fh.readlines()
+temp = ""
+for i in range(n):
+    print(lines[i],end="")
+    temp = temp+ lines[i]
+word = input("Enter word to search")
+freq = str(temp).count(word)
+print(word ,"appears",freq,'times')
+fh.close()
+ 

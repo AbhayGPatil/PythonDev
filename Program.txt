@@ -1,0 +1,34 @@
+import re
+def isphonenum_v1(pno):
+    if len(pno)!=12 :
+        return False
+    if not pno[0:3].isdigit():
+        return False
+    if pno[3]!='-':
+        return False
+    if not pno[4:7].isdigit():
+        return False
+    if pno[7]!='-':
+        return False
+    if not pno[8:12].isdigit():
+        return False  
+    return True
+def isphonenum_v2(pno):
+    regex = r'\d\d\d-\d\d\d-\d\d\d\d'
+    result = re.search(regex,pno)
+    if result !=None:
+        return True
+    else:
+        return False 
+pno = input ("Enter the phone number")
+result= isphonenum_v1(pno)
+if result ==True:
+    print("Valid phone num")
+else:
+    print("Invalid phhone number")
+result= isphonenum_v2(pno)
+if result ==True:
+    print("Valid phone num")
+else:
+    print("Invalid phhone number")
+
