@@ -1,0 +1,18 @@
+
+def ins_sort(a):
+    for i in range(1, len(a)):
+        j=i
+        while a[j]<a[j-1] and j>0:
+            a[j] , a[j-1] = a[j-1] , a[j]
+            j=j-1
+print('Enter number of elements')
+n=int(input())
+print("Enter",n,"elements")
+a=[]
+for i in range(n):
+    a.append(int(input()))   
+print("Before sorting")
+print(a)
+ins_sort(a)
+print("After sorting")
+print(a)
