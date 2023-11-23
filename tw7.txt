@@ -1,0 +1,14 @@
+s = input("Enter a sentence")
+words = len(s.split(" "))
+print ("The sentene has",words,"words")
+digits = lower = upper = 0
+for ch in s:
+    if ch.isdigit():
+        digits+=1
+    if ch.isupper():
+        upper+=1
+    if ch.islower():
+        lower+=1
+print("The sentence has ",digits,"digits")
+print("The sentence has ",lower,"lower case letters")
+print("The sentence has ",upper,"upper case letters")
