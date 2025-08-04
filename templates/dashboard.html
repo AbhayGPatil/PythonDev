@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IfutureTech Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="main-content">
+            <div class="header">
+                <h1>Welcome to IfutureTech Admin Dashboard</h1>
+                <div class="user-info">
+                    <span>Hello, {{ username }}</span>
+                    <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="welcome-section">
+                    <h2>Dashboard Overview</h2>
+                    <p>Use the navigation tabs on the right to manage different sections of the admin panel.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Users</h3>
+                            <div class="stat-number" id="userCount">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Total Enquiries</h3>
+                            <div class="stat-number" id="enquiryCount">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Total Admissions</h3>
+                            <div class="stat-number" id="admissionCount">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="nav-tabs">
+                <h3>Navigation</h3>
+                <a href="#" class="nav-tab" onclick="loadSection('certification')">
+                    <span class="tab-icon">📋</span>
+                    Certification
+                </a>
+                <a href="{{ url_for('enquiry') }}" class="nav-tab">
+                    <span class="tab-icon">❓</span>
+                    Enquiry
+                </a>
+                <a href="{{ url_for('admission') }}" class="nav-tab">
+                    <span class="tab-icon">🎓</span>
+                    Admission
+                </a>
+                <a href="{{ url_for('users') }}" class="nav-tab">
+                    <span class="tab-icon">👥</span>
+                    Users
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

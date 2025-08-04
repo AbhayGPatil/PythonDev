@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - IfutureTech Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="main-content">
+            <div class="header">
+                <h1>User Management</h1>
+                <div class="user-info">
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+            
+            <div class="section-tabs">
+                <button class="tab-btn active" onclick="showSection('add-users')">Add Users</button>
+                <button class="tab-btn" onclick="showSection('view-users')">View Users</button>
+            </div>
+            
+            <!-- Add Users Section -->
+            <div id="add-users" class="section-content active">
+                <h2>Add New Admin User</h2>
+                <form id="addUserForm" class="form-container">
+                    <div class="form-group">
+                        <label for="newUsername">Username</label>
+                        <input type="text" id="newUsername" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newPassword">Password</label>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="permissions">Permissions</label>
+                        <select id="permissions" required>
+                            <option value="all">All Tabs Access</option>
+                            <option value="enquiry,admission">Enquiry & Admission Only</option>
+                            <option value="enquiry">Enquiry Only</option>
+                            <option value="admission">Admission Only</option>
+                            <option value="users">Users Management Only</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Add User</button>
+                </form>
+            </div>
+            
+            <!-- View Users Section -->
+            <div id="view-users" class="section-content">
+                <h2>Admin Users List</h2>
+                <div class="users-container">
+                    <div class="users-count">
+                        <p>Total Admin Users: <span id="totalUsers">0</span></p>
+                    </div>
+                    <div class="users-table-container">
+                        <table class="users-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Permissions</th>
+                                    <th>Created Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Users will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="nav-tabs">
+                <h3>Navigation</h3>
+                <a href="#" class="nav-tab" onclick="loadSection('certification')">
+                    <span class="tab-icon">📋</span>
+                    Certification
+                </a>
+                <a href="{{ url_for('enquiry') }}" class="nav-tab">
+                    <span class="tab-icon">❓</span>
+                    Enquiry
+                </a>
+                <a href="{{ url_for('admission') }}" class="nav-tab">
+                    <span class="tab-icon">🎓</span>
+                    Admission
+                </a>
+                <a href="{{ url_for('users') }}" class="nav-tab active">
+                    <span class="tab-icon">👥</span>
+                    Users
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit User Modal -->
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit User</h3>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <form id="editUserForm">
+                <input type="hidden" id="editUserId">
+                <div class="form-group">
+                    <label for="editUsername">Username</label>
+                    <input type="text" id="editUsername" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editPassword">New Password (leave blank to keep current)</label>
+                    <input type="password" id="editPassword">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editPermissions">Permissions</label>
+                    <select id="editPermissions" required>
+                        <option value="all">All Tabs Access</option>
+                        <option value="enquiry,admission">Enquiry & Admission Only</option>
+                        <option value="enquiry">Enquiry Only</option>
+                        <option value="admission">Admission Only</option>
+                        <option value="users">Users Management Only</option>
+                    </select>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/users.js') }}"></script>
+</body>
+</html>
