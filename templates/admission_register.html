@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Admission - IfutureTech Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="main-content">
+            <div class="header">
+                <h1>Register New Admission</h1>
+                <div class="user-info">
+                    <a href="{{ url_for('admission') }}" class="btn btn-secondary">Back to Admissions</a>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Dashboard</a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+            
+            <div class="register-container">
+                <form id="admissionRegisterForm" class="admission-form">
+                    <div class="form-section">
+                        <h3>Student Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentName">Name *</label>
+                                <input type="text" id="studentName" required placeholder="Enter student full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentCourse">Course *</label>
+                                <input type="text" id="studentCourse" required placeholder="Enter course name">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentContact">Contact *</label>
+                                <input type="text" id="studentContact" required placeholder="Enter contact number">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentProject">Project *</label>
+                                <input type="text" id="studentProject" required placeholder="Enter project details">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="collegeName">College Name *</label>
+                                <input type="text" id="collegeName" required placeholder="Enter college name">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Fee Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="totalFees">Total Fees *</label>
+                                <input type="number" id="totalFees" step="0.01" required placeholder="0.00">
+                            </div>
+                            <div class="form-group">
+                                <label for="paidStatus">Paid Status *</label>
+                                <select id="paidStatus" required>
+                                    <option value="">Select payment status</option>
+                                    <option value="FULL">Full</option>
+                                    <option value="HALF">Half</option>
+                                    <option value="PENDING">Pending</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="paidDate">Paid Date</label>
+                                <input type="date" id="paidDate" placeholder="Select payment date">
+                                <small>Leave blank if not yet paid</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+                        <button type="submit" class="btn btn-success">Save Admission</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="nav-tabs">
+                <h3>Navigation</h3>
+                <a href="#" class="nav-tab" onclick="loadSection('certification')">
+                    <span class="tab-icon">📋</span>
+                    Certification
+                </a>
+                <a href="{{ url_for('enquiry') }}" class="nav-tab">
+                    <span class="tab-icon">❓</span>
+                    Enquiry
+                </a>
+                <a href="{{ url_for('admission') }}" class="nav-tab active">
+                    <span class="tab-icon">🎓</span>
+                    Admission
+                </a>
+                <a href="{{ url_for('users') }}" class="nav-tab">
+                    <span class="tab-icon">👥</span>
+                    Users
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/admission_register.js') }}"></script>
+</body>
+</html>
